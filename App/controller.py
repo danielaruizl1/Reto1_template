@@ -56,7 +56,7 @@ def loadMovies (catalog):
     
     """
     t1_start = process_time() #tiempo inicial
-    moviesfile = cf.data_dir + 'themoviesdb/SmallMoviesDetailsCleaned.csv'
+    moviesfile = cf.data_dir + 'themoviesdb\\SmallMoviesDetailsCleaned.csv'
     
     dialect = csv.excel()
     dialect.delimiter=";"
@@ -126,3 +126,11 @@ def getBestMovies (catalog, number):
         lt.addLast (bestmovies, movie)
     return bestmovies
 
+def getWorstMovies (catalog, number):
+    movies = catalog['movies']
+    worstmovies = lt.newList()
+    size=lt.size(movies)
+    for cont in range (size-number, size):
+        movie = lt.getElement (movies, cont)
+        lt.addLast (worstmovies, movie)
+    return worstmovies
