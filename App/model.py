@@ -45,12 +45,19 @@ def newCatalog():
 
 
 def newActor (name, movie_id):
+    actor = {'aname':'', 'movie_id':''}
+    actor  ['aname'] = name
+    actor  ['movie_id'] = movie_id
+    return actor
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
     pass
 
 def addActor (catalog, actor):
+
+    a= newActor(actor['aname'], actor['id'])
+    lt.addLast (catalog['actors'], a)
     """
     Adiciona un actor a la lista de actores
     """
