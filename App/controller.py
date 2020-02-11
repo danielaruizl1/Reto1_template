@@ -56,7 +56,7 @@ def loadMovies (catalog):
     
     """
     t1_start = process_time() #tiempo inicial
-    moviesfile = cf.data_dir + 'themoviesdb\\SmallMoviesDetailsCleaned.csv'
+    moviesfile = cf.data_dir + 'themoviesdb/SmallMoviesDetailsCleaned.csv'
     
     dialect = csv.excel()
     dialect.delimiter=";"

@@ -81,5 +81,16 @@ def getMoviesByDirector (catalog, dir_name):
     """
     Retorna las peliculas a partir del nombre del director
     """
-    return []
+    for director in catalog['directors']:
+        count=0
+        i=0
+        print(director[i])
+        directores=lt.newList()
+        if director[i]==dir_name:
+            lt.addLast(directores,director)
+            count+=1
+            if i<=lt.size(director):
+                i+=1
+    print(count)
+    return directores
 
