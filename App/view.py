@@ -104,7 +104,7 @@ while True:
 
     elif int(inputs[0])==5:
         label = input ("Nombre del Actor a buscar: ")
-        pass
+        movies= controller.getMoviesByDirector(catalog, label)
     else:
         sys.exit(0)
 sys.exit(0)
