@@ -89,7 +89,15 @@ def getMoviesByDirector (catalog, dir_name):
         element = it.next(iterator)
 
         if dir_name in element['name']:
-            lt.addLast(ids,element['movie_id'])
+            lt.addLast(ids,element['movie_id']
+
+    #iterator2 = it.newIterator(catalog['movies'])
+    
+    #while 
+    print(catalog['movies'])
 
     return lt.size(ids)
+
+
+
 
