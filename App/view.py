@@ -40,7 +40,7 @@ def printMenu():
     print("2- Peliculas con mejores votaciones")
     print("3- Peliculas con peores votaciones")
     print("4- Peliculas por Director")
-    print("5- Requerimiento 2 ... etc")
+    print("5- Películas por Actor")
     print("0- Salir")
 
 

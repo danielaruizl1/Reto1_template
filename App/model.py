@@ -45,8 +45,8 @@ def newCatalog():
 
 
 def newActor (name, movie_id):
-    actor = {'aname':'', 'movie_id':''}
-    actor  ['aname'] = name
+    actor = {'name':'', 'movie_id':''}
+    actor  ['name'] = name
     actor  ['movie_id'] = movie_id
     return actor
     """
@@ -56,7 +56,7 @@ def newActor (name, movie_id):
 
 def addActor (catalog, actor):
 
-    a= newActor(actor['aname'], actor['id'])
+    a= newActor(actor['actor1_name'], actor['id'])
     lt.addLast (catalog['actors'], a)
     """
     Adiciona un actor a la lista de actores
@@ -67,7 +67,7 @@ def newDirector (name, movie_id):
     """
     Esta estructura almancena los directores de una pelicula.
     """
-    director = {'name':'', 'movie_id':''}
+    director = {'director_name':'', 'movie_id':''}
     director ['name'] = name
     director ['movie_id'] = movie_id
     return director
@@ -88,6 +88,8 @@ def getMoviesByDirector (catalog, dir_name):
     """
     Retorna las peliculas a partir del nombre del director
     """
+
+    """
     iterator = it.newIterator(catalog['directors'])
     ids=lt.newList()
 
@@ -98,12 +100,13 @@ def getMoviesByDirector (catalog, dir_name):
         if dir_name in element['name']:
             lt.addLast(ids,element['movie_id']
 
+ 
+    #return lt.size(ids)
     #iterator2 = it.newIterator(catalog['movies'])
     
     #while 
-    print(catalog['movies'])
-
-    return lt.size(ids)
+    #print(catalog['movies'])
+    """
 
 
 
