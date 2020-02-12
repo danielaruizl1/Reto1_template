@@ -56,8 +56,8 @@ def newActor (name, movie_id):
 
 def addActor (catalog, actor):
 
-    a= newActor(actor['aname'], actor['id'])
-    lt.addLast (catalog['actors'], a)
+    #a= newActor(actor['name'], actor['id'])
+    #lt.addLast (catalog['actors'], a)
     """
     Adiciona un actor a la lista de actores
     """
@@ -80,31 +80,46 @@ def addDirector (catalog, director):
     d = newDirector (director['director_name'], director['id'])
     lt.addLast (catalog['directors'], d)
 
-
-
 # Funciones de consulta
 
 def getMoviesByDirector (catalog, dir_name):
     """
     Retorna las peliculas a partir del nombre del director
     """
+    
     iterator = it.newIterator(catalog['directors'])
+    iterator3 = it.newIterator(catalog['movies'])
     ids=lt.newList()
+    suma=0
+    contador=0
 
     while  it.hasNext(iterator):
   
         element = it.next(iterator)
 
         if dir_name in element['name']:
-            lt.addLast(ids,element['movie_id']
+            lt.addLast(ids,element['movie_id'])
 
-    #iterator2 = it.newIterator(catalog['movies'])
+    iterator2 = it.newIterator(ids)
+
+    while it.hasNext(iterator2):
+        
+        element2= it.next(iterator2)      
+
+        while it.hasNext(iterator3):   
+        
+            element3= it.next(iterator3)
+
+            if element2==element3['id']:
+
+                suma+=float(element3['vote_average'])
+                contador+=1
+                print(contador)
     
-    #while 
-    print(catalog['movies'])
+    promedio=suma/lt.size(ids)
+    
+    print('El número de películas del director es: ',contador,'y su promedio de votos es: ',promedio)
 
-    return lt.size(ids)
-
-
+    
 
 
