@@ -37,10 +37,12 @@ operación solicitada
 def printMenu():
     print("Bienvenido al Reto 1")
     print("1- Cargar información del reto")
-    print("2- Peliculas con mejores votaciones")
-    print("3- Peliculas con peores votaciones")
-    print("4- Peliculas por Director")
-    print("5- Películas por Actor")
+    print("2- Películas con votación positiva de un director")
+    print("3- Peliculas con mejores votaciones")
+    print("4- Peliculas con peores votaciones")
+    print("5- Peliculas por Director")
+    print("6- Películas por Actor")
+    print("7- Cantidad de películas según género")
     print("0- Salir")
 
 
@@ -85,26 +87,34 @@ while True:
         print ('Peliculas cargadas: ' + str(lt.size(catalog['movies'])))
         print ('Directores cargados: ' + str(lt.size(catalog['directors'])))
 
-
     elif int(inputs[0])==2:
+        dir_name = input ("Nombre del director a buscar: ")
+        movies = controller.getMoviesPositiveVotacionDirector(catalog, dir_name)
+
+    elif int(inputs[0])==3:
         number = input ("Buscando las TOP ?: ")
         movies = controller.getBestMovies (catalog, int(number))
         printBestMovies (movies)
 
-    elif int(inputs[0])==3:
+    elif int(inputs[0])==4:
         number = input ("Buscando las peores... ?: ")
         movies = controller.getWorstMovies (catalog, int(number))
         printBestMovies (movies)
 
-    elif int(inputs[0])==4:
+    elif int(inputs[0])==5:
         dir_name = input("Nombre del director a buscar: ")
         movies = controller.getMoviesByDirector (catalog, dir_name)
         print(movies)
 
+    elif int(inputs[0])==6:
+        act_name = input ("Nombre del Actor a buscar: ")
+        movies= controller.getMoviesByActor(catalog, act_name)
 
-    elif int(inputs[0])==5:
-        label = input ("Nombre del Actor a buscar: ")
-        movies= controller.getMoviesByActor(catalog, label)
+    elif int(inputs[0])==7:
+        genre_name = input ("Nombre del género a buscar: ")
+        movies= controller.getMoviesByGenres(catalog, genre_name)
+
     else:
         sys.exit(0)
+
 sys.exit(0)

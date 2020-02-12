@@ -124,12 +124,8 @@ def loadData (catalog):
     
 
 # Funciones llamadas desde la vista y enviadas al modelo
-
-def getMoviesByDirector (catalog, dir_name):
-    return model.getMoviesByDirector(catalog, dir_name)
-
-def getMoviesByActor(catalog, act_name):
-    return model.getMoviesByActor(catalog, act_name)
+def getMoviesPositiveVotacionDirector (catalog, dir_name):
+    return model.getMoviesPositiveVotacionDirector(catalog, dir_name)
 
 def getBestMovies (catalog, number):
     movies = catalog['movies']
@@ -147,3 +143,15 @@ def getWorstMovies (catalog, number):
         movie = lt.getElement (movies, cont)
         lt.addLast (worstmovies, movie)
     return worstmovies
+
+
+def getMoviesByDirector (catalog, dir_name):
+    return model.getMoviesByDirector(catalog, dir_name)
+
+def getMoviesByActor(catalog, act_name):
+    return model.getMoviesByActor(catalog, act_name)
+
+def getMoviesByGenres (catalog, genre_name):
+    return model.getMoviesByGenres(catalog, genre_name)
+
+

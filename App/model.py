@@ -48,30 +48,29 @@ def newActor (name, movie_id):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    actor = {'name':'', 'movie_id': lt.newList }
-    actor  ['name'] = name
-    actor  ['movie_id'] = movie_id
+    actor = {'name':'', 'movie_id':''}
+    actor ['name'] = name
+    actor ['movie_id'] = movie_id
     return actor
 
 def addActor (catalog, actor):
-<<<<<<< HEAD
 
-    #a= newActor(actor['name'], actor['id'])
-    #lt.addLast (catalog['actors'], a)
-=======
->>>>>>> 62ec3c29b37ab3a7f8706973dd69ee7d347175a6
     """
     Adiciona un actor a la lista de actores
     """
     a= newActor(actor['actor1_name'], actor['id'])
+    a= newActor(actor['actor2_name'], actor['id'])
+    a= newActor(actor['actor3_name'], actor['id'])
+    a= newActor(actor['actor4_name'], actor['id'])
+    a= newActor(actor['actor5_name'], actor['id'])
     lt.addLast (catalog['actors'], a)
 
 
 def newDirector (name, movie_id):
     """
-    Esta estructura almancena los directores de una pelicula.
+    Esta estructura almacena los directores de una pelicula.
     """
-    director = {'director_name':'', 'movie_id':''}
+    director = {'name':'', 'movie_id':''}
     director ['name'] = name
     director ['movie_id'] = movie_id
     return director
@@ -85,53 +84,44 @@ def addDirector (catalog, director):
     lt.addLast (catalog['directors'], d)
 
 # Funciones de consulta
+def getMoviesPositiveVotacionDirector (catalog, dir_name):
+    """
+    Retorna las películas con votación postiva (>= 6) de un determinado director"
+    """
+    counter=0
+    iterator = catalog['directors']
+    iterator2 = catalog['movies']
+
+    for elemento in iterator['elements'] :
+        if dir_name.lower() in elemento["name"].lower(): #filtrar por palabra clave 
+            for elemento2 in iterator2['elements']:
+                if elemento['movie_id']==elemento2['id'] and float(elemento2['vote_average'])>=6:
+                    counter+=1
+
+    return print("el número de películas con votación positiva para el director seleccionado es: ",counter)
 
 def getMoviesByDirector (catalog, dir_name):
     """
     Retorna las peliculas a partir del nombre del director
     """
-<<<<<<< HEAD
     
-=======
-
-    """
->>>>>>> 62ec3c29b37ab3a7f8706973dd69ee7d347175a6
-    iterator = it.newIterator(catalog['directors'])
-    iterator3 = it.newIterator(catalog['movies'])
-    ids=lt.newList()
+    iterator = catalog['directors']
+    iterator2 = catalog['movies']
     suma=0
     contador=0
 
-    while  it.hasNext(iterator):
-  
-        element = it.next(iterator)
+    for elemento in iterator['elements']:
+        if dir_name.lower() in elemento['name'].lower():
+            contador+=1
+            for elemento2 in iterator2['elements']:
+                if elemento['movie_id']==elemento2['id'].lower():
+                    suma+=float(elemento2['vote_average'])
 
-        if dir_name in element['name']:
-            lt.addLast(ids,element['movie_id'])
-
-<<<<<<< HEAD
-    iterator2 = it.newIterator(ids)
-
-    while it.hasNext(iterator2):
-        
-        element2= it.next(iterator2)      
-
-        while it.hasNext(iterator3):   
-        
-            element3= it.next(iterator3)
-
-            if element2==element3['id']:
-=======
- 
-    #return lt.size(ids)a
-    #iterator2 = it.newIterator(catalog['movies'])
+    promedio=suma/contador
     
-    #while 
-    #print(catalog['movies'])
-    """
-    pass
-def getMoviesByActor(catalog, act_name):
+    print('El número de películas del director es: ',contador,'y su promedio de votos es: ',promedio)
 
+def getMoviesByActor (catalog, act_name):
 
     iterator = it.newIterator(catalog['actors'])
     ids=lt.newList()
@@ -140,7 +130,7 @@ def getMoviesByActor(catalog, act_name):
 
         element = it.next(iterator)
 
-        if act_name in element['name']and act_name not in "   none       ":
+        if act_name.lower() in element['name'].lower() and act_name not in "   none       ":
 
 
             if lt.isPresent(ids, act_name, comparefunction)!=0 :
@@ -149,18 +139,24 @@ def getMoviesByActor(catalog, act_name):
                 
                 lt.addLast(ids,element['movie_id'])
     
-    print(ids)
     return ids
->>>>>>> 62ec3c29b37ab3a7f8706973dd69ee7d347175a6
 
-                suma+=float(element3['vote_average'])
-                contador+=1
-                print(contador)
+def getMoviesByGenres (catalog, genre_name):
     
-    promedio=suma/lt.size(ids)
-    
-    print('El número de películas del director es: ',contador,'y su promedio de votos es: ',promedio)
+    iterator = it.newIterator(catalog['movies'])
+    suma=0
+    contador=0
 
+    while  it.hasNext(iterator):
+  
+        element = it.next(iterator)
+
+        if genre_name.lower() in element['genres'].lower():
+            contador+=1
+            suma+=float(element['vote_average'])
     
+    promedio=round((suma/contador),2)
+
+    return print('El número de películas de este género es: ',contador, ' y el promedio de su votación es: ',promedio)
 
 
