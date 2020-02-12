@@ -128,6 +128,9 @@ def loadData (catalog):
 def getMoviesByDirector (catalog, dir_name):
     return model.getMoviesByDirector(catalog, dir_name)
 
+def getMoviesByActor(catalog, act_name):
+    return model.getMoviesByActor(catalog, act_name)
+
 def getBestMovies (catalog, number):
     movies = catalog['movies']
     bestmovies = lt.newList()
