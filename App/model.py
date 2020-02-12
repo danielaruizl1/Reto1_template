@@ -45,7 +45,7 @@ def newCatalog():
 
 
 def newActor (name, movie_id):
-    actor = {'name':'', 'movie_id':''}
+    actor = {'name':'', 'movie_id': lt.newList }
     actor  ['name'] = name
     actor  ['movie_id'] = movie_id
     return actor
@@ -98,16 +98,34 @@ def getMoviesByDirector (catalog, dir_name):
         element = it.next(iterator)
 
         if dir_name in element['name']:
-            lt.addLast(ids,element['movie_id']
+            lt.addLast(ids,element['movie_id'])
 
  
-    #return lt.size(ids)
+    #return lt.size(ids)a
     #iterator2 = it.newIterator(catalog['movies'])
     
     #while 
     #print(catalog['movies'])
     """
+def getMoviesByActor(catalog, act_name):
 
+
+    iterator = it.newIterator(catalog['actors'])
+    ids=lt.newList()
+
+    while  it.hasNext(iterator):
+
+        element = it.next(iterator)
+
+        if act_name in element['name']:
+
+
+            if lt.isPresent(ids["name"], act_name, comparefunction)!=0:
+                ids["movie_id"]= lt.addLast(ids["movie_id"],element["movie_id"])
+            else: 
+                
+                lt.addLast(ids,element['movie_id'])
+    return ids
 
 
 
