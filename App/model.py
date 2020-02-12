@@ -45,23 +45,21 @@ def newCatalog():
 
 
 def newActor (name, movie_id):
+    """
+    Crea una nueva estructura para almacenar los actores de una pelicula 
+    """
     actor = {'name':'', 'movie_id': lt.newList }
     actor  ['name'] = name
     actor  ['movie_id'] = movie_id
     return actor
-    """
-    Crea una nueva estructura para almacenar los actores de una pelicula 
-    """
-    pass
 
 def addActor (catalog, actor):
-
-    a= newActor(actor['actor1_name'], actor['id'])
-    lt.addLast (catalog['actors'], a)
     """
     Adiciona un actor a la lista de actores
     """
-    pass
+    a= newActor(actor['actor1_name'], actor['id'])
+    lt.addLast (catalog['actors'], a)
+
 
 def newDirector (name, movie_id):
     """
@@ -107,6 +105,7 @@ def getMoviesByDirector (catalog, dir_name):
     #while 
     #print(catalog['movies'])
     """
+    pass
 def getMoviesByActor(catalog, act_name):
 
 
@@ -117,14 +116,16 @@ def getMoviesByActor(catalog, act_name):
 
         element = it.next(iterator)
 
-        if act_name in element['name']:
+        if act_name in element['name']and act_name not in "   none       ":
 
 
-            if lt.isPresent(ids["name"], act_name, comparefunction)!=0:
+            if lt.isPresent(ids, act_name, comparefunction)!=0 :
                 ids["movie_id"]= lt.addLast(ids["movie_id"],element["movie_id"])
             else: 
                 
                 lt.addLast(ids,element['movie_id'])
+    
+    print(ids)
     return ids
 
 
