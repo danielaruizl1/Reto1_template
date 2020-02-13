@@ -23,6 +23,7 @@
 import config as cf
 from ADT import list as lt
 from DataStructures import listiterator as it
+from App import controller as ct
 
 
 """
@@ -48,7 +49,7 @@ def newActor (name, movie_id, dir_name):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    actor = {'name':'', 'movie_id':'', "dir_name": ""}
+    actor = {'name':'', 'movie_id':lt.newList, "dir_name":lt.newList}
     actor ['name'] = name
     actor ['movie_id'] = movie_id
     actor ["dir_name"] = dir_name
@@ -59,17 +60,25 @@ def addActor (catalog, actor):
     """
     Adiciona un actor a la lista de actores
     """
-    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
-    lt.addLast (catalog['actors'], a)
-    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
-    lt.addLast (catalog['actors'], a)
-    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
-    lt.addLast (catalog['actors'], a)
-    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
-    lt.addLast (catalog['actors'], a) 
-    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
-    lt.addLast (catalog['actors'], a)
-  
+    if actor["actor1_name"]!= "None": 
+
+        a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
+        lt.addLast (catalog['actors'], a)
+
+def AddActor1(actor, actor_name, catalog):
+    actores= catalog["actors"]
+    if actor[actor_name].lower() not in  "   none    ":
+        if it.isPresent(actores["elements"], actor_name, ct.compareratingpeople):
+            UpdateeActor(catalog, )
+        else: 
+            a= newActor(actor[actor_name], actor['id'], actor["director_name"])
+            lt.addLast (catalog['actors'], a)
+
+
+
+
+def UpdateActor(catalog,  ):
+
 
 def newDirector (name, movie_id):
     """
