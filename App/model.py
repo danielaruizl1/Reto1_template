@@ -71,7 +71,7 @@ def addActor (catalog, actor):
     lt.addLast (catalog['actors'], a)
   
 
-def newDirector (name, movie_id):
+def newDirector (name, movie_id): 
     """
     Esta estructura almacena los directores de una pelicula.
     """
@@ -132,9 +132,8 @@ def getMoviesByDirector (catalog, dir_name):
 
 def getMoviesByActor (catalog, act_name):
 
-<<<<<<< HEAD
-    """iterator = it.newIterator(catalog['actors'])
-=======
+    iterator = it.newIterator(catalog['actors'])
+
     iterator = catalog['actors']
     iterator2 = catalog['movies']
     iterator3= catalog["directors"]
@@ -170,7 +169,6 @@ def getMoviesByActor (catalog, act_name):
 
     """
     iterator = it.newIterator(catalog['actors'])
->>>>>>> c193015b1054b2fdf885d8d814c3954c9caf5546
     ids=lt.newList()
 
     while  it.hasNext(iterator):
@@ -183,27 +181,10 @@ def getMoviesByActor (catalog, act_name):
             if lt.isPresent(ids, act_name, comparefunction)!=0 :
                 ids["movie_id"]= lt.addLast(ids["movie_id"],element["movie_id"])
             else: 
-                
-                lt.addLast(ids,element['movie_id'])"""
-
-    actores = catalog['actors']
+                lt.addLast(ids,element['movie_id'])"
     
-
-    print(catalog['actors'])
-    """contador=0
-
-    for elemento in actores['elements']:
-        if act_name.lower() in elemento['name'].lower():
-            contador+=1
-            for elemento2 in 
-            suma+=float(elemento['vote_average'])"""
-    
-<<<<<<< HEAD
-=======
     return ids
     """
->>>>>>> c193015b1054b2fdf885d8d814c3954c9caf5546
-
 def getMoviesByGenres (catalog, genre_name):
     
     movies = catalog['movies']
