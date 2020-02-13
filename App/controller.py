@@ -118,7 +118,7 @@ def loadData (catalog):
     estructura de datos
     """
     loadMovies(catalog)
-    sort.sort(catalog['movies'],compareratings)
+    sort.sort(catalog['movies'], compareratings)
     loadDirectors(catalog)
     loadActors(catalog)
     
@@ -128,22 +128,10 @@ def getMoviesPositiveVotacionDirector (catalog, dir_name):
     return model.getMoviesPositiveVotacionDirector(catalog, dir_name)
 
 def getBestMovies (catalog, number):
-    movies = catalog['movies']
-    bestmovies = lt.newList()
-    for cont in range (1, number+1):
-        movie = lt.getElement (movies, cont)
-        lt.addLast (bestmovies, movie)
-    return bestmovies
+    return model.getBestMovies(catalog, number)
 
 def getWorstMovies (catalog, number):
-    movies = catalog['movies']
-    worstmovies = lt.newList()
-    size=lt.size(movies)
-    for cont in range (size-number, size):
-        movie = lt.getElement (movies, cont)
-        lt.addLast (worstmovies, movie)
-    return worstmovies
-
+    return model.getWorstMovies(catalog, number)
 
 def getMoviesByDirector (catalog, dir_name):
     return model.getMoviesByDirector(catalog, dir_name)

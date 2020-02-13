@@ -90,6 +90,23 @@ def addDirector (catalog, director):
     lt.addLast (catalog['directors'], d)
 
 # Funciones de consulta
+def getBestMovies (catalog, number):
+    movies = catalog['movies']
+    bestmovies = lt.newList()
+    for cont in range (1, number+1):
+        movie = lt.getElement (movies, cont)
+        lt.addLast (bestmovies, movie)
+    return bestmovies
+
+def getWorstMovies (catalog, number):
+    movies = catalog['movies']
+    worstmovies = lt.newList()
+    size=lt.size(movies)
+    for cont in range (size-number, size):
+        movie = lt.getElement (movies, cont)
+        lt.addLast (worstmovies, movie)
+    return worstmovies
+
 def getMoviesPositiveVotacionDirector (catalog, dir_name):
     """
     Retorna las películas con votación postiva (>= 6) de un determinado director"
@@ -163,8 +180,7 @@ def getMoviesByActor (catalog, act_name):
     else:
         promedio=contador
     
-    
-    print('El número de películas del actor es: ',contador,', su promedio de votos es: ',promedio,\
+    return print('El número de películas del actor es: ',contador,', su promedio de votos es: ',promedio,\
     "y el director que más lo ha dirigido es: ", director )
 
     """
