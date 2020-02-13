@@ -44,13 +44,14 @@ def newCatalog():
     return catalog
 
 
-def newActor (name, movie_id):
+def newActor (name, movie_id, dir_name):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    actor = {'name':'', 'movie_id':''}
+    actor = {'name':'', 'movie_id':'', "dir_name": ""}
     actor ['name'] = name
     actor ['movie_id'] = movie_id
+    actor ["dir_name"] = dir_name
     return actor
 
 def addActor (catalog, actor):
@@ -58,18 +59,23 @@ def addActor (catalog, actor):
     """
     Adiciona un actor a la lista de actores
     """
-    a= newActor(actor['actor1_name'], actor['id'])
-    a= newActor(actor['actor2_name'], actor['id'])
-    a= newActor(actor['actor3_name'], actor['id'])
-    a= newActor(actor['actor4_name'], actor['id'])
-    a= newActor(actor['actor5_name'], actor['id'])
+    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
     lt.addLast (catalog['actors'], a)
-
+    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
+    lt.addLast (catalog['actors'], a)
+    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
+    lt.addLast (catalog['actors'], a)
+    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
+    lt.addLast (catalog['actors'], a) 
+    a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
+    lt.addLast (catalog['actors'], a)
+  
 
 def newDirector (name, movie_id):
     """
     Esta estructura almacena los directores de una pelicula.
     """
+
     director = {'name':'', 'movie_id':''}
     director ['name'] = name
     director ['movie_id'] = movie_id
@@ -117,13 +123,54 @@ def getMoviesByDirector (catalog, dir_name):
                 if elemento['movie_id']==elemento2['id'].lower():
                     suma+=float(elemento2['vote_average'])
 
-    promedio=suma/contador
+    if contador!=0:
+        promedio=round(suma/(contador),2)
+    else:
+        promedio=contador
     
     print('El número de películas del director es: ',contador,'y su promedio de votos es: ',promedio)
 
 def getMoviesByActor (catalog, act_name):
 
+<<<<<<< HEAD
     """iterator = it.newIterator(catalog['actors'])
+=======
+    iterator = catalog['actors']
+    iterator2 = catalog['movies']
+    iterator3= catalog["directors"]
+    suma=0
+    contador=0
+
+    for elemento in iterator['elements']:
+        directores=0 
+        director= ""
+        if act_name.lower() in elemento['name'].lower():
+
+            contador+=1
+            for elemento2 in iterator2['elements']:
+                if elemento['movie_id']==elemento2['id'].lower():
+                    suma+=float(elemento2['vote_average'])
+
+            for elemento3 in iterator3['elements']:
+                directorescontador=0
+                if elemento['dir_name']==elemento3['name'].lower():
+                    directorescontador+=1
+            if directorescontador> directores:
+                director== elemento["dir_name"]
+                directores= directorescontador
+
+    if contador!=0:
+        promedio=round(suma/(contador),2)
+    else:
+        promedio=contador
+    
+    
+    print('El número de películas del actor es: ',contador,', su promedio de votos es: ',promedio,\
+    "y el director que más lo ha dirigido es: ", director )
+
+    """
+    iterator = it.newIterator(catalog['actors'])
+>>>>>>> c193015b1054b2fdf885d8d814c3954c9caf5546
     ids=lt.newList()
 
     while  it.hasNext(iterator):
@@ -151,6 +198,11 @@ def getMoviesByActor (catalog, act_name):
             for elemento2 in 
             suma+=float(elemento['vote_average'])"""
     
+<<<<<<< HEAD
+=======
+    return ids
+    """
+>>>>>>> c193015b1054b2fdf885d8d814c3954c9caf5546
 
 def getMoviesByGenres (catalog, genre_name):
     
@@ -163,8 +215,8 @@ def getMoviesByGenres (catalog, genre_name):
             contador+=1
             suma+=float(elemento['vote_average'])
     
-    promedio=round((suma/contador),2)
-
+    if contador!=0:
+        promedio=round(suma/(contador),2)
+    else:
+        promedio=contador
     return print('El número de películas de este género es: ',contador, ' y el promedio de su votación es: ',promedio)
-
-
