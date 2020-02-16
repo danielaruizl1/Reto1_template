@@ -48,7 +48,7 @@ def compareratings (movie1, movie2):
     return ( float(movie1['vote_average']) > float(movie2['vote_average']))
     
 def compareratingpeople(actor1, actor2):
-    return (actor1["name"]) == (actor2['name']))
+    return (actor1["name"]) == (actor2['name'])
 
 
 

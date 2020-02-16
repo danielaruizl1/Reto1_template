@@ -26,6 +26,7 @@ from DataStructures import listiterator as it
 from App import controller as ct
 
 
+
 """
 Se define la estructura de un catálogo de libros.
 El catálogo tendrá tres listas, una para libros, otra para autores 
@@ -60,24 +61,46 @@ def addActor (catalog, actor):
     """
     Adiciona un actor a la lista de actores
     """
-    if actor["actor1_name"]!= "None": 
 
-        a= newActor(actor['actor1_name'], actor['id'], actor["director_name"])
-        lt.addLast (catalog['actors'], a)
+    AddActor1( actor, "actor1_name", catalog)
+    AddActor1( actor, "actor2_name", catalog)
+    AddActor1( actor, "actor3_name", catalog)
+    AddActor1( actor, "actor4_name", catalog)
+    AddActor1( actor, "actor5_name", catalog)
 
 def AddActor1(actor, actor_name, catalog):
-    actores= catalog["actors"]
-    if actor[actor_name].lower() not in  "   none    ":
-        if it.isPresent(actores["elements"], actor_name, ct.compareratingpeople):
-            UpdateeActor(catalog, )
+    """
+    Revisa si el recuadro es none, si ya estaba presente el actor en la lista actualiza
+    su informacióm, en caso contrario crea el actor
+
+
+    """
+    print(actor[actor_name])
+    if actor[actor_name] !=  "none":
+        
+        if lt.isPresent(catalog["actors"], actor_name, ct.compareratingpeople):
+            UpdateActor(catalog, actor, actor_name)
         else: 
             a= newActor(actor[actor_name], actor['id'], actor["director_name"])
             lt.addLast (catalog['actors'], a)
 
+ 
 
 
+def UpdateActor(catalog, actor, actor_name):
+    """
+    Actualiza info actor
 
-def UpdateActor(catalog,  ):
+    """
+    n=0
+    cada_actor= True
+    while cada_actor:
+        if actor_name in catalog["actors"]["elements"][n]["name"]:
+            catalog["actors"]["elements"][n]["movie_id"]= lt.addLast(catalog["actors"]["elements"][n]["movie_id"], actor["id"])
+            catalog["actors"]["elements"][n]["dir_name"]= lt.addLast(catalog["actors"]["elements"][n]["dir_name"], actor["director_name"])
+            cada_actor== False 
+        else: 
+            n+=1
 
 
 def newDirector (name, movie_id): 
