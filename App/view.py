@@ -123,7 +123,7 @@ while True:
 
     elif int(inputs[0])==7:
         genre_name = input ("Nombre del género a buscar: ")
-        movies= controller.getMoviesByGenres(catalog, genre_name)
+        controller.getMoviesByGenres(catalog, genre_name)
 
     else:
         sys.exit(0)
