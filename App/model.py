@@ -24,6 +24,7 @@ import config as cf
 from ADT import list as lt
 from DataStructures import listiterator as it
 from App import controller as ct
+from Sorting import mergesort as ms
 
 
 
@@ -50,10 +51,10 @@ def newActor (name, movie_id, dir_name):
     """
     Crea una nueva estructura para almacenar los actores de una pelicula 
     """
-    actor = {'name':'', 'movie_id':lt.newList, "dir_name":lt.newList}
+    actor = {'name':'', 'movie_id':lt.newList("ARRAY_LIST"), "dir_name":lt.newList("ARRAY_LIST")}
     actor ['name'] = name
-    actor ['movie_id'] = movie_id
-    actor ["dir_name"] = dir_name
+    lt.addLast(actor["movie_id"], movie_id)
+    lt.addLast(actor["dir_name"], dir_name)
     return actor
 
 def addActor (catalog, actor):
@@ -75,7 +76,6 @@ def AddActor1(actor, actor_name, catalog):
 
 
     """
-    print(actor[actor_name])
     if actor[actor_name].lower() !=  "none":
         
         if lt.isPresent(catalog["actors"], actor[actor_name], ct.comparepeople) != 0:
@@ -92,10 +92,28 @@ def UpdateActor(catalog, actor, actor_name):
     Actualiza info actor
 
     """
-    
-    n=it.newIterator(catalog['actors'])
-    print(n)
+    #posicion= catalog["actors"]["elements"].get(actor_name) No funciona :(
+
+    iterator=it.newIterator(catalog['actors'])
+    while  it.hasNext(iterator):
+
+        element = it.next(iterator)
+
+        if actor_name in element["name"]:
+            lt.addLast(element["movie_id"], actor["id"])
+            lt.addLast(element["dir_name"], actor["director_name"])
+            if it.hasNext(iterator):
+                iterator['iterable_lst'] == []
+
+
+
+
+
+
+
+    """
     print(catalog["actors"]["elements"][n]["name"])
+    
     cada_actor= True
     while cada_actor:
         if actor_name in catalog["actors"]["elements"][n]["name"]:
@@ -105,6 +123,7 @@ def UpdateActor(catalog, actor, actor_name):
         else: 
             n+=1
 
+    """
 
 def newDirector (name, movie_id): 
     """
@@ -187,10 +206,42 @@ def getMoviesByActor (catalog, act_name):
     iterator = it.newIterator(catalog['actors'])
 
     iterator = catalog['actors']
+  
     iterator2 = catalog['movies']
-    iterator3= catalog["directors"]
     suma=0
-    contador=0
+    peliculas= lt.newList("ARRAY_LIST")
+
+    director=""
+    numdirector=-1
+
+
+    posicion= lt.isPresent(iterator, act_name, ct.comparepeople)
+    if posicion != 0:
+        actor = lt.getElement(iterator, posicion)
+        for pelicula in actor["movie_id"]["elements"]:
+            for element in iterator2["elements"]:
+                if element["id"]==pelicula: 
+                    lt.addLast(peliculas, element)
+                    suma+= float(element["vote_average"])
+            for direc in actor["dir_name"]["elements"]:
+                cont = actor["dir_name"]["elements"].count(direc)
+                nombredir= actor["dir_name"]["elements"]
+                if numdirector < cont:
+                    numdirector = cont
+                    director = nombredir
+
+            contador=lt.size(actor["movie_id"])
+            promedio=round(suma/(contador),2)
+
+
+        print('El número de películas del actor es: ',contador,', su promedio de votos es: ',promedio,\
+            "y el director que más lo ha dirigido es: ", director )
+
+    else: 
+        print("El actor ingresado no se encuentra en la lista")
+
+
+    """
 
     for elemento in iterator['elements']:
         directores=0 
@@ -209,15 +260,8 @@ def getMoviesByActor (catalog, act_name):
             if directorescontador> directores:
                 director== elemento["dir_name"]
                 directores= directorescontador
-
-    if contador!=0:
-        promedio=round(suma/(contador),2)
-    else:
-        promedio=contador
-    
-    return print('El número de películas del actor es: ',contador,', su promedio de votos es: ',promedio,\
-    "y el director que más lo ha dirigido es: ", director )
-
+    """
+    return peliculas
     """
     iterator = it.newIterator(catalog['actors'])
     ids=lt.newList()

@@ -71,6 +71,16 @@ def printBestMovies (movies):
             print ('Titulo: ' + movie['original_title'] + '  Fecha: ' + movie['release_date'] + ' Rating: ' + movie['vote_average'])
     else:
         print ('No se encontraron peliculas')
+def printMovies (movies):
+    size = lt.size(movies)
+    if size:
+        print (' Estas son las peliculas: ')
+        iterator = it.newIterator(movies)
+        while  it.hasNext(iterator):
+            movie = it.next(iterator)
+            print ('Titulo: ' + movie['original_title'] + '  Fecha: ' + movie['release_date'] + ' Rating: ' + movie['vote_average'])
+    else:
+        print ('No se encontraron peliculas')
 
 
 
@@ -109,6 +119,7 @@ while True:
     elif int(inputs[0])==6:
         act_name = input ("Nombre del Actor a buscar: ")
         movies= controller.getMoviesByActor(catalog, act_name)
+        printMovies(movies)
 
     elif int(inputs[0])==7:
         genre_name = input ("Nombre del género a buscar: ")

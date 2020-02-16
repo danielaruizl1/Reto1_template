@@ -26,6 +26,7 @@ from ADT import list as lt
 from DataStructures import listiterator as it
 from Sorting import mergesort as sort
 from time import process_time 
+from Sorting import shellsort as shell
 
 
 """
@@ -48,7 +49,9 @@ def compareratings (movie1, movie2):
     return ( float(movie1['vote_average']) > float(movie2['vote_average']))
     
 def comparepeople(actor1, actor2):
-    return actor1 == (actor2['name'])
+    return actor1.lower() in (actor2['name']).lower()
+def comparenames(name1, name2):
+    return name1["name"].lower() < name2["name"].lower()
 
 
 
@@ -104,7 +107,7 @@ def loadActors(catalog):
         for row in spamreader: 
             model.addActor (catalog, row)
     t1_stop = process_time() #tiempo inicial
-    print("Tiempo de ejecución carga directores",t1_stop-t1_start," segundos")
+    print("Tiempo de ejecución carga actores",t1_stop-t1_start," segundos")
 
 
 def initCatalog ():
@@ -124,7 +127,10 @@ def loadData (catalog):
     loadMovies(catalog)
     sort.sort(catalog['movies'], compareratings)
     loadDirectors(catalog)
+    sort.sort(catalog["directors"], comparenames)
     loadActors(catalog)
+    sort.sort(catalog["actors"], comparenames)
+ 
     
 
 # Funciones llamadas desde la vista y enviadas al modelo

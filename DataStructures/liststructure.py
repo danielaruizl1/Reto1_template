@@ -168,7 +168,7 @@ def isPresent (lst, element, comparefunction):
     Informa si el elemento element esta presente en la lista. Si esta presente retorna 
     la posición en la que se encuentra o cero (0) si no esta presente
     """
-    if (lst['type']=='ARRAY_LIST'):
+    if ( lst['type'] =='ARRAY_LIST'):
         return alt.isPresent (lst, element, comparefunction)
     else:
         return slt.isPresent (lst, element, comparefunction)
