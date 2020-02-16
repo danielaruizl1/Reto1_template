@@ -181,7 +181,7 @@ def getMoviesByDirector (catalog, dir_name):
     """
     Retorna las peliculas a partir del nombre del director
     """
-    
+    peliculas= lt.newList("ARRAY_LIST")
     directors = catalog['directors']
     movies= catalog['movies']
     suma=0
@@ -192,6 +192,7 @@ def getMoviesByDirector (catalog, dir_name):
             contador+=1
             for elemento2 in movies['elements']:
                 if elemento['movie_id']==elemento2['id'].lower():
+                    lt.addLast(peliculas, elemento2)
                     suma+=float(elemento2['vote_average'])
 
     if contador!=0:
@@ -200,6 +201,8 @@ def getMoviesByDirector (catalog, dir_name):
         promedio=contador
     
     print('El número de películas del director es: ',contador,'y su promedio de votos es: ',promedio)
+
+    return peliculas
 
 def getMoviesByActor (catalog, act_name):
 
@@ -219,24 +222,23 @@ def getMoviesByActor (catalog, act_name):
     if posicion != 0:
         actor = lt.getElement(iterator, posicion)
         for pelicula in actor["movie_id"]["elements"]:
-            print(pelicula)
             for element in iterator2["elements"]:
                 if element["id"]==pelicula: 
                     lt.addLast(peliculas, element)
                     suma+= float(element["vote_average"])
-            for direc in actor["dir_name"]["elements"]:
-                cont = actor["dir_name"]["elements"].count(direc)
-                nombredir= actor["dir_name"]["elements"]
-                if numdirector < cont:
-                    numdirector = cont
-                    director = nombredir
+        for direc in actor["dir_name"]["elements"]:
+            print(direc)
+            cont = actor["dir_name"]["elements"].count(direc)
+            if numdirector < cont:
+                numdirector = cont
+                director = direc
 
-            contador=lt.size(actor["movie_id"])
-            promedio=round(suma/(contador),2)
+        contador=lt.size(actor["movie_id"])
+        promedio=round(suma/(contador),2)
 
 
-        print('El número de películas del actor es: ',contador,', su promedio de votos es: ',promedio,\
-            "y el director que más lo ha dirigido es: ", director )
+        print('El número de películas del actor es: ',contador,',\n su promedio de votos es: ',promedio,\
+            "\n y el director que más lo ha dirigido es: ", director )
 
     else: 
         print("El actor ingresado no se encuentra en la lista")

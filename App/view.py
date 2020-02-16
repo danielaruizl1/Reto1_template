@@ -114,7 +114,7 @@ while True:
     elif int(inputs[0])==5:
         dir_name = input("Nombre del director a buscar: ")
         movies = controller.getMoviesByDirector (catalog, dir_name)
-        print(movies)
+        printMovies(movies)
 
     elif int(inputs[0])==6:
         act_name = input ("Nombre del Actor a buscar: ")
