@@ -76,9 +76,9 @@ def AddActor1(actor, actor_name, catalog):
 
     """
     print(actor[actor_name])
-    if actor[actor_name] !=  "none":
+    if actor[actor_name].lower() !=  "none":
         
-        if lt.isPresent(catalog["actors"], actor_name, ct.compareratingpeople):
+        if lt.isPresent(catalog["actors"], actor[actor_name], ct.comparepeople) != 0:
             UpdateActor(catalog, actor, actor_name)
         else: 
             a= newActor(actor[actor_name], actor['id'], actor["director_name"])
@@ -92,7 +92,10 @@ def UpdateActor(catalog, actor, actor_name):
     Actualiza info actor
 
     """
-    n=0
+    
+    n=it.newIterator(catalog['actors'])
+    print(n)
+    print(catalog["actors"]["elements"][n]["name"])
     cada_actor= True
     while cada_actor:
         if actor_name in catalog["actors"]["elements"][n]["name"]:
