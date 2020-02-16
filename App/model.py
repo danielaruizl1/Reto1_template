@@ -79,7 +79,7 @@ def AddActor1(actor, actor_name, catalog):
     if actor[actor_name].lower() !=  "none":
         
         if lt.isPresent(catalog["actors"], actor[actor_name], ct.comparepeople) != 0:
-            UpdateActor(catalog, actor, actor_name)
+            UpdateActor(catalog, actor, actor[actor_name] )
         else: 
             a= newActor(actor[actor_name], actor['id'], actor["director_name"])
             lt.addLast (catalog['actors'], a)
@@ -219,6 +219,7 @@ def getMoviesByActor (catalog, act_name):
     if posicion != 0:
         actor = lt.getElement(iterator, posicion)
         for pelicula in actor["movie_id"]["elements"]:
+            print(pelicula)
             for element in iterator2["elements"]:
                 if element["id"]==pelicula: 
                     lt.addLast(peliculas, element)
@@ -280,6 +281,7 @@ def getMoviesByActor (catalog, act_name):
     
     return ids
     """
+
 def getMoviesByGenres (catalog, genre_name):
     
     movies = catalog['movies']
