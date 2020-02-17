@@ -18,10 +18,14 @@ Este repositorio contiene una plantilla del proyecto del reto con el ejemplo de 
 Daniela Andrea Ruiz Lopez y Jesús Manuel Ospino Bernal.
 
 ¿Se debería ordenar la información? ¿Por qué concepto?
-Sí, ya que permite la obtención de datos en los rankings de manera más sencilla.
+Sí, ya que permite la obtención de datos de manera más eficiente.
 La información de las películas se organizó bajo el concepto de promedio de votos.
 ¿Cómo usar la menor cantidad de memoria posible?
 Referenciando apuntadores a otras listas. 
 ¿Cómo se utilizaron las estructuras de datos vistas en clase?
-El mergesort se utilizó para organizar las listas de películas bajo el el promedio de votos de esta. 
+Se utilizó la lista como Tipo Abstracto de Datos para la resolución de los requerimientos. Lo anterior,
+ a través de una vista, un modelo y un controlador, lo cuales permitian una implementación versatil en caso de
+ querer cambiar el tipo de lista a usar (lista encadenada o arreglo). Asimismo, se utilizó el tipo de ordamiento
+ mergesort para organizar las listas de películas bajo el el promedio de votos de esta, ya que se considera el método
+ de ordamiento más eficiente y estable. 
 
