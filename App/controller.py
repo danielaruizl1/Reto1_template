@@ -128,6 +128,7 @@ def loadData (catalog):
     sort.sort(catalog['movies'], compareratings)
     loadDirectors(catalog)
     sort.sort(catalog["directors"], comparenames)
+    print(catalog["directors"]["elements"])
     loadActors(catalog)
     sort.sort(catalog["actors"], comparenames)
  
