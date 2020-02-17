@@ -37,48 +37,22 @@ def printQueue (queue):
         element = it.next(iterator)
         print (element)
 
-print ('Creating books queue')
-lst_books= q.newQueue()
+print ('Creating movies queue')
+lst_movies= q.newQueue()
 
-print ('Creating tag queue')
-lst_tags=  q.newQueue('ARRAY_LIST')
+print ('Creating movies casting queue')
+lst_movie_casting= q.newQueue()
 
-print ('Creating books-tag queue')
-lst_book_tags= q.newQueue()
 
-print ('Creating ratings queue')
-lst_ratings= q.newQueue()
-
-print ('Creating to-read queue')
-lst_to_read= q.newQueue()
-
-print ('Loading books')
-booksfile = cf.data_dir + 'GoodReads/books.csv'
-loadCSVFile (booksfile, lst_books)
-print (lst_books['size'])
-printQueue (lst_books)
+print ('Loading movies')
+moviesfile = cf.data_dir + 'themoviesdb/SmallMoviesDetailsCleaned.csv'
+loadCSVFile (moviesfile, lst_movies)
+print (lst_movies['size'])
+printQueue (lst_movies)
 
 
 print ('Loading tags')
-tagsfile = cf.data_dir + 'GoodReads/tags.csv'
-loadCSVFile (tagsfile, lst_tags)
-print (lst_tags['size'])
-printQueue (lst_tags)
-
-print ('Loading books-tags')
-booktagsfile = cf.data_dir + 'GoodReads/book_tags.csv'
-loadCSVFile (booktagsfile, lst_book_tags)
-print (lst_book_tags['size'])
-#printList (lst_book_tags)
-
-print ('Loading ratings')
-ratingsfile = cf.data_dir + 'GoodReads/ratings.csv'
-loadCSVFile (ratingsfile, lst_ratings)
-print (lst_ratings['size'])
-#printList (lst_ratings)
-
-print ('Loading books to read')
-toreadfile = cf.data_dir + 'GoodReads/to_read.csv'
-loadCSVFile (toreadfile, lst_to_read)
-print (lst_to_read['size'])
-#printList (lst_to_read)
+moviecastingfile = cf.data_dir + 'themoviesdb/MoviesCastingRaw-small.csv'
+loadCSVFile (moviecastingfile, lst_tags)
+print (lst_movie_casting['size'])
+printQueue (lst_movie_casting)

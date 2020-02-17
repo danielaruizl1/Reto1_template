@@ -32,13 +32,14 @@ class shellSortTest (unittest.TestCase):
     list_type = 'ARRAY_LIST'
     #list_type = 'SINGLE_LINKED_LIST'
     
-    lst_books = lt.newList(list_type)
-    booksfile = cf.data_dir + 'GoodReads/books.csv'
+        
+    lst_movies = lt.newList(list_type)
+    moviesfile = cf.data_dir + 'themoviesdb/MoviesCastingRaw-small.csv'
 
     def setUp (self):
-        print ('Loading books')
-        self.loadCSVFile (self.booksfile, self.lst_books)
-        print (self.lst_books['size'])
+        print ('Loading movies')
+        self.loadCSVFile (self.moviesfile, self.lst_movies)
+        print (self.lst_movies['size'])
 
 
     def tearDown (self):
@@ -54,22 +55,30 @@ class shellSortTest (unittest.TestCase):
         iterator = it.newIterator(lst)
         while  it.hasNext(iterator):
             element = it.next(iterator)
-            print (element ['goodreads_book_id'])
+            print (element ['id'])
 
 
     def lessequal( self, element1, element2):
-        if int(element1['goodreads_book_id']) <=  int(element2['goodreads_book_id']):
+        if int(element1['id']) <=  int(element2['id']):
             return True
         return False
 
 
-    def test_sort (self):
+    def test_sort_mayor_a_menor (self):
         """
          Lista con elementos en orden aleatorio
         """
         print ("sorting ....")
-        sort.quickSort (self.lst_books, self.lessequal)
-        self.printList (self.lst_books)
+        sort.quickSort (self.lst_movies, self.less)
+        self.printList (self.lst_movies)
+
+    def test_sort_menor_a_mayor (self):
+        """
+         Lista con elementos en orden aleatorio
+        """
+        print ("sorting ....")
+        sort.quickSort (self.lst_movies, self.greater)
+        self.printList (self.lst_movies)
 
 
 if __name__ == "__main__":

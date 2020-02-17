@@ -27,11 +27,12 @@ from DataStructures import liststructure as slt
 class ListTest (unittest.TestCase):
 
     def setUp (self):
-        self.book1 = {'book_id':'1', 'book_title':'Title 1', 'author':'author 1'}
-        self.book2 = {'book_id':'2', 'book_title':'Title 2', 'author':'author 2'}
-        self.book3 = {'book_id':'3', 'book_title':'Title 3', 'author':'author 3'}
-        self.book4 = {'book_id':'4', 'book_title':'Title 4', 'author':'author 4'}
-        self.book5 = {'book_id':'5', 'book_title':'Title 5', 'author':'author 5'}
+        self.movie1 = {'movie_id':'1', 'movie_title':'Title 1', 'author':'author 1'}
+        self.movie2 = {'movie_id':'2', 'movie_title':'Title 2', 'author':'author 2'}
+        self.movie3 = {'movie_id':'3', 'movie_title':'Title 3', 'author':'author 3'}
+        self.movie4 = {'movie_id':'4', 'movie_title':'Title 4', 'author':'author 4'}
+        self.movie5 = {'movie_id':'5', 'movie_title':'Title 5', 'author':'author 5'}
+        self.movie6 = {'movie_id':'6', 'movie_title':'Title 6', 'author':'author 6'}
 
     def tearDown (self):
         pass
@@ -46,81 +47,81 @@ class ListTest (unittest.TestCase):
         self.lst = slt.newList('ARRAY_LIST')
         self.assertEqual (slt.isEmpty(self.lst), True)
         self.assertEqual (slt.size(self.lst), 0)
-        slt.addFirst (self.lst, self.book1)
+        slt.addFirst (self.lst, self.movie1)
         self.assertEqual (slt.size(self.lst), 1)
-        slt.addFirst (self.lst, self.book2)
+        slt.addFirst (self.lst, self.movie2)
         self.assertEqual (slt.size(self.lst), 2)
-        book = slt.firstElement(self.lst)
-        self.assertDictEqual (book, self.book2)
+        movie = slt.firstElement(self.lst)
+        self.assertDictEqual (movie, self.movie2)
 
 
     def test_addLast (self):
         self.lst = slt.newList('ARRAY_LIST')
         self.assertEqual (slt.isEmpty(self.lst), True)
         self.assertEqual (slt.size(self.lst), 0)
-        slt.addLast (self.lst, self.book1)
+        slt.addLast (self.lst, self.movie1)
         self.assertEqual (slt.size(self.lst), 1)
-        slt.addLast (self.lst, self.book2)
+        slt.addLast (self.lst, self.movie2)
         self.assertEqual (slt.size(self.lst), 2)
-        book = slt.firstElement(self.lst)
-        self.assertDictEqual (book, self.book1)
-        book = slt.lastElement(self.lst)
-        self.assertDictEqual (book, self.book2)
+        movie = slt.firstElement(self.lst)
+        self.assertDictEqual (movie, self.movie1)
+        movie = slt.lastElement(self.lst)
+        self.assertDictEqual (movie, self.movie2)
 
 
     def test_getElement (self):
         self.lst = slt.newList('ARRAY_LIST')
         self.assertEqual (slt.isEmpty(self.lst), True)
         self.assertEqual (slt.size(self.lst), 0)
-        slt.addLast (self.lst, self.book1)
+        slt.addLast (self.lst, self.movie1)
         self.assertEqual (slt.size(self.lst), 1)
-        slt.addLast (self.lst, self.book2)
+        slt.addLast (self.lst, self.movie2)
         self.assertEqual (slt.size(self.lst), 2)
-        book = slt.getElement(self.lst, 1)
-        self.assertDictEqual (book, self.book1)
-        book = slt.getElement(self.lst, 2)
-        self.assertDictEqual (book, self.book2)
+        movie = slt.getElement(self.lst, 1)
+        self.assertDictEqual (movie, self.movie1)
+        movie = slt.getElement(self.lst, 2)
+        self.assertDictEqual (movie, self.movie2)
 
     def test_removeFirst (self):
         self.lst = slt.newList('ARRAY_LIST')
         self.assertEqual (slt.isEmpty(self.lst), True)
         self.assertEqual (slt.size(self.lst), 0)
-        slt.addLast (self.lst, self.book1)
+        slt.addLast (self.lst, self.movie1)
         self.assertEqual (slt.size(self.lst), 1)
-        slt.addLast (self.lst, self.book2)
+        slt.addLast (self.lst, self.movie2)
         self.assertEqual (slt.size(self.lst), 2)
         slt.removeFirst(self.lst)
-        book = slt.getElement(self.lst, 1)
+        movie = slt.getElement(self.lst, 1)
         self.assertEqual (slt.isEmpty(self.lst), False)
         self.assertEqual (slt.size(self.lst), 1)
-        self.assertDictEqual (book, self.book2)
+        self.assertDictEqual (movie, self.movie2)
 
     def test_removeLast (self):
         self.lst = slt.newList('ARRAY_LIST')
         self.assertEqual (slt.isEmpty(self.lst), True)
         self.assertEqual (slt.size(self.lst), 0)
-        slt.addLast (self.lst, self.book1)
+        slt.addLast (self.lst, self.movie1)
         self.assertEqual (slt.size(self.lst), 1)
-        slt.addLast (self.lst, self.book2)
+        slt.addLast (self.lst, self.movie2)
         self.assertEqual (slt.size(self.lst), 2)
         slt.removeLast(self.lst)
-        book = slt.getElement(self.lst, 1)
+        movie = slt.getElement(self.lst, 1)
         self.assertEqual (slt.isEmpty(self.lst), False)
         self.assertEqual (slt.size(self.lst), 1)
-        self.assertDictEqual (book, self.book1)
+        self.assertDictEqual (movie, self.movie1)
 
     def test_insertElement (self):
         self.lst = slt.newList('ARRAY_LIST')
         self.assertEqual (slt.isEmpty(self.lst), True)
         self.assertEqual (slt.size(self.lst), 0)
-        slt.insertElement (self.lst, self.book1, 1)
+        slt.insertElement (self.lst, self.movie1, 1)
         self.assertEqual (slt.size(self.lst), 1)
-        slt.insertElement (self.lst, self.book2, 1)
+        slt.insertElement (self.lst, self.movie2, 1)
         self.assertEqual (slt.size(self.lst), 2)
-        book = slt.getElement(self.lst, 1)
-        self.assertDictEqual (book, self.book2)
-        book = slt.getElement(self.lst, 2)
-        self.assertDictEqual (book, self.book1)
+        movie = slt.getElement(self.lst, 1)
+        self.assertDictEqual (movie, self.movie2)
+        movie = slt.getElement(self.lst, 2)
+        self.assertDictEqual (movie, self.movie1)
 
 
 
