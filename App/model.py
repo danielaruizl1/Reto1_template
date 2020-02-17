@@ -103,7 +103,7 @@ def UpdateActor(catalog, actor, actor_name):
             lt.addLast(element["movie_id"], actor["id"])
             lt.addLast(element["dir_name"], actor["director_name"])
             if it.hasNext(iterator):
-                iterator['iterable_lst'] == []
+                iterator['iterable_lst'] = []
 
 
 
