@@ -21,7 +21,7 @@ Daniela Andrea Ruiz Lopez y Jesús Manuel Ospino Bernal.
 Sí, ya que permite la obtención de datos en los rankings de manera más sencilla.
 La información de las películas se organizó bajo el concepto de promedio de votos.
 ¿Cómo usar la menor cantidad de memoria posible?
-Referenciado apuntadores a otras listas. 
+Referenciando apuntadores a otras listas. 
 ¿Cómo se utilizaron las estructuras de datos vistas en clase?
 El mergesort se utilizó para organizar las listas de películas bajo el el promedio de votos de esta. 
 
