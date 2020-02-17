@@ -13,3 +13,7 @@ Este repositorio contiene una plantilla del proyecto del reto con el ejemplo de 
 *	Test: pruebas unitarias en Python para validar el código desarrollado.
 
 ![Modelo-Vista-Controlador](http://sistemasproyectos.uniandes.edu.co/iniciativas/architlab/wp-content/uploads/sites/7/2020/02/MVC.png)
+
+
+Daniela Andrea Ruiz Lopez y Jesús Manuel Ospino Bernal.
+
